@@ -28,4 +28,5 @@ def calculate_result(score):
     return result
 
 
-main()
+if __name__ == '__main__':
+    main()
