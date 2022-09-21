@@ -18,7 +18,7 @@ def main():
             result = calculate_result(score)
             print(f"Result: {result}")
         elif choice == "P":
-            print_stars(int(score))
+            print_characters(int(score))
         else:
             print("Invalid option")
         print(MENU)
@@ -34,7 +34,7 @@ def get_valid_score():
     return score
 
 
-def print_stars(length, character='*'):
+def print_characters(length, character='*'):
     """Print a line of characters for length n"""
     print(length * character)
 
