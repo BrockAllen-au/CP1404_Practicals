@@ -27,3 +27,7 @@ print(random.uniform(2.5, 5.5))  # line 3
 # 3.148966946615765, 4.53941486430838, 3.4748171038248583, 4.0584761505813916
 # What was the smallest number you could have seen? What was the largest?
 # 2.50000000000 & 5.50000000000
+
+from random import randrange
+
+print(f"Random number: {randrange(1, 101)}")
