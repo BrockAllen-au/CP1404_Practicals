@@ -25,3 +25,10 @@ in_file = open("name.txt", 'r')
 name = in_file.readline()
 print(f"Your name is {name}")
 in_file.close()
+
+# 3
+in_file = open("numbers.txt")
+numbers = in_file.readlines()
+sum = int(numbers[0]) + int(numbers[1])
+print(sum)
+in_file.close()
