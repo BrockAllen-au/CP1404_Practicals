@@ -19,7 +19,7 @@ OUTPUT_FILE = "conrad_output.txt"
 out_file = open(OUTPUT_FILE, 'w')
 price = INITIAL_PRICE
 day = 1
-print("Starting price: ${:,.2f}".format(price), file=out_file)
+print(f"Starting price: ${price:,.2f}", file=out_file)
 
 while price >= MIN_PRICE and price <= MAX_PRICE:
     price_change = 0
@@ -35,7 +35,7 @@ while price >= MIN_PRICE and price <= MAX_PRICE:
         price_change = random.uniform(-MAX_DECREASE, 0)
 
     price *= (1 + price_change)
-    print("On day {} price is: ${:,.2f}".format(day, price), file=out_file)
+    print(f"On day {day} price is: ${price:,.2f}", file=out_file)
     day += 1
 
 out_file.close()
