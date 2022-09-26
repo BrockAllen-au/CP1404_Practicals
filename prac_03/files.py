@@ -32,3 +32,11 @@ numbers = in_file.readlines()
 sum = int(numbers[0]) + int(numbers[1])
 print(sum)
 in_file.close()
+
+# 4
+total = 0
+in_file = open("numbers.txt", 'r')
+for line in in_file:
+    total += int(line)
+print(f"Total: {total}")
+in_file.close()
