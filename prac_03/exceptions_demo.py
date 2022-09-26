@@ -16,3 +16,10 @@ except ValueError:
 except ZeroDivisionError:
     print("Cannot divide by zero!")
 print("Finished.")
+
+# When will a ValueError occur?
+# This error will occur if the input to numerator or denominator are not integers. E.g letters (abcd...) or even,
+# float numbers. E.g (15.5)
+
+# When will a ZeroDivisionError occur?
+# This will occur if the denominator entered is a 0
