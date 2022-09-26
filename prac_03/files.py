@@ -14,3 +14,8 @@ reads only the first two numbers and adds them together then prints the result, 
 4. Now write a fourth block of code that prints the total for all lines in numbers.txt,
 or a file with any number of numbers.
 """
+# 1
+name = input("What is your name? ").title()
+out_file = open("name.txt", 'w')
+print(name, file=out_file)
+out_file.close()
