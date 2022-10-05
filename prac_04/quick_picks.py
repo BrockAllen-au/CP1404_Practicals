@@ -12,3 +12,23 @@ from random import randrange
 
 START_RANGE = 1
 END_RANGE = 46  # Randrange doesn't include final number in range
+
+
+def main():
+    """Lottery quick pick generator program."""
+    number_of_quick_picks = get_valid_number("How many quick picks? ")
+
+
+def get_valid_number(prompt):
+    """Check that a valid number is received from user."""
+    valid_input = False
+    while not valid_input:
+        try:
+            number = int(input(prompt))
+            valid_input = True
+        except ValueError:
+            print("Please enter a valid number")
+    return number
+
+
+main()
