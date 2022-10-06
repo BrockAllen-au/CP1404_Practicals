@@ -18,11 +18,13 @@ NUMBERS_TO_GENERATE = 6  # How many numbers to pick on each line
 def main():
     """Lottery quick pick generator program."""
     number_of_quick_picks = get_valid_number("How many quick picks? ")
-    generate_quick_picks(number_of_quick_picks)
+    quick_picks = generate_quick_picks(number_of_quick_picks)
+    display_quick_picks(quick_picks)
 
 
 def generate_quick_picks(number_of_quick_picks):
     """Generate n number of lottery quick picks"""
+    quick_picks = []
     for i in range(number_of_quick_picks):
         picks = []
         for j in range(NUMBERS_TO_GENERATE):
@@ -31,8 +33,15 @@ def generate_quick_picks(number_of_quick_picks):
                 # If number already in list, generate a new one
                 number = randrange(START_RANGE, END_RANGE)
             picks.append(number)
-        picks.sort()
-        for number in picks:
+        quick_picks.append(picks)
+    return quick_picks
+
+
+def display_quick_picks(quick_picks):
+    """Neatly display quick pick data as a sorted grid."""
+    for quick_pick in quick_picks:
+        quick_pick.sort()
+        for number in quick_pick:
             print(f"{number:2}", end=" ")
         print()
 
