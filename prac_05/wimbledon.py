@@ -11,6 +11,16 @@ def main():
     """Wimbledon winners and countries program."""
     records = get_records(FILENAME)
     countries, winner_to_count = process_records(records)
+    display_records(countries, winner_to_count)
+
+
+def display_records(countries, winner_to_count):
+    """Displays winners and countries."""
+    print("Wimbledon Champions:")
+    for name, count in winner_to_count.items():
+        print(name, count)
+    print(f"\nThese {len(countries)} countries have won Wimbledon: ")
+    print(", ".join(country for country in sorted(countries)))
 
 
 def process_records(records):
