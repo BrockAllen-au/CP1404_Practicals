@@ -10,7 +10,20 @@ WINNER_INDEX = 2
 def main():
     """Wimbledon winners and countries program."""
     records = get_records(FILENAME)
-    print(records)
+    countries, winner_to_count = process_records(records)
+
+
+def process_records(records):
+    """Creates a dictionary of champions and a set of countries."""
+    countries = set()
+    winner_to_count = {}
+    for record in records:
+        countries.add(record[COUNTRY_INDEX])
+        try:
+            winner_to_count[record[WINNER_INDEX]] += 1
+        except KeyError:
+            winner_to_count[record[WINNER_INDEX]] = 1
+    return countries, winner_to_count
 
 
 def get_records(file):
