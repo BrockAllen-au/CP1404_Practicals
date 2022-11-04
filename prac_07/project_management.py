@@ -15,26 +15,24 @@ def main():
     """Project Management Program."""
     projects = []
     load_projects(FILENAME, projects)
-    projects.sort()
     print(MENU)
     menu_choice = input(">>> ").upper()
     while menu_choice != "Q":
         if menu_choice == "L":
             new_project_file = input("Enter file you wish to load: ")
             load_projects(new_project_file, projects)
-            projects.sort()
         elif menu_choice == "S":
             new_save_file = input("Enter new save file: ")
             save_projects(new_save_file, projects)
         elif menu_choice == "D":
-            print("Display chosen")
-            display_projects(projects)
+            display_projects_status(projects)
         elif menu_choice == "F":
             print("Filter chosen")
         elif menu_choice == "A":
             print("Add chosen")
         elif menu_choice == "U":
             print("Update chosen")
+            display_projects(projects)
         else:
             print("Invalid option")
         print(MENU)
@@ -44,14 +42,21 @@ def main():
 
 
 def display_projects(projects):
+    """Displays all projects."""
+    for i, project in enumerate(projects):
+        print(i, project)
+
+
+def display_projects_status(projects):
+    """Displays all projects ordered priority."""
     print("Incomplete projects:")
-    for project in projects:
+    for project in sorted(projects):
         if not project.is_complete():
-            print(f"\t{project}")
+            print(" ", project)
     print("Completed projects:")
-    for project in projects:
+    for project in sorted(projects):
         if project.is_complete():
-            print(f"\t{project}")
+            print(" ", project)
 
 
 def load_projects(filename, projects):
