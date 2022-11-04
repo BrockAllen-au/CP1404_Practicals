@@ -23,6 +23,10 @@ class Project:
         """Tests if the project is 100% complete."""
         return self.completion_percentage == 100
 
+    def __lt__(self, other):
+        """Used for sorting projects by priority."""
+        return self.priority < other.priority
+
 
 if __name__ == "__main__":
     test_project = Project("Build Car Park", "12/09/2021", 2, 60000.0, 95)

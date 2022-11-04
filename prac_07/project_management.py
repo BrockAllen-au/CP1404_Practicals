@@ -15,12 +15,14 @@ def main():
     """Project Management Program."""
     projects = []
     load_projects(FILENAME, projects)
+    projects.sort()
     print(MENU)
     menu_choice = input(">>> ").upper()
     while menu_choice != "Q":
         if menu_choice == "L":
             new_project_file = input("Enter file you wish to load: ")
             load_projects(new_project_file, projects)
+            projects.sort()
         elif menu_choice == "S":
             new_save_file = input("Enter new save file: ")
             save_projects(new_save_file, projects)
