@@ -19,7 +19,16 @@ class Project:
         return f"{self.name}, start: {self.start_date}, priority {self.priority}, estimate: ${self.cost_estimate}, " \
                f"completion: {self.completion_percentage}%"
 
+    def is_complete(self):
+        """Tests if the project is 100% complete."""
+        return self.completion_percentage == 100
+
 
 if __name__ == "__main__":
     test_project = Project("Build Car Park", "12/09/2021", 2, 60000.0, 95)
+    test_completed_project = Project("Read 7 Habits Book", "13/12/2021", 6, 99.0, 100)
+    "Read 7 Habits Book	13/12/2021	6	99.0	100"
     print(test_project)
+    print("Project complete? expect False, returned: ", test_project.is_complete())
+    print(test_completed_project)
+    print("Project complete? expect True, returned: ", test_completed_project.is_complete())
