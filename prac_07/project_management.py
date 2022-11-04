@@ -32,14 +32,24 @@ def main():
             print("Let's add a new project")
             add_new_project(projects)
         elif menu_choice == "U":
-            print("Update chosen")
             display_projects(projects)
+            update_project(projects)
         else:
             print("Invalid option")
         print(MENU)
         menu_choice = input(">>> ").upper()
     save_projects(FILENAME, projects)
     print("Thank you for using custom-built project management software.")
+
+
+def update_project(projects):
+    project_choice = int(input("Project choice: "))
+    project = projects[project_choice]
+    print(project)
+    new_completion = int(input("New Percentage: "))
+    new_priority = int(input("New Priority: "))
+    project.completion_percentage = new_completion
+    project.priority = new_priority
 
 
 def add_new_project(projects):
