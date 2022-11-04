@@ -22,7 +22,8 @@ def main():
             new_project_file = input("Enter file you wish to load: ")
             load_projects(new_project_file, projects)
         elif menu_choice == "S":
-            print("Save chosen")
+            new_save_file = input("Enter new save file: ")
+            save_projects(new_save_file, projects)
         elif menu_choice == "D":
             print("Display chosen")
         elif menu_choice == "F":
@@ -35,6 +36,7 @@ def main():
             print("Invalid option")
         print(MENU)
         menu_choice = input(">>> ").upper()
+    save_projects(FILENAME, projects)
     print("Thank you for using custom-built project management software.")
 
 
@@ -48,6 +50,16 @@ def load_projects(filename, projects):
         project = Project(parts[0], parts[1], int(parts[2]), float(parts[3]), int(parts[4]))
         projects.append(project)
 
+
+def save_projects(filename, projects):
+    """Saves projects to a file."""
+    out_file = open(filename, "w")
+    # Recreate file headers
+    print("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage", file=out_file)
+    for project in projects:
+        print(project.name, project.start_date, project.priority, project.cost_estimate, project.completion_percentage,
+              file=out_file, sep="\t")
+    out_file.close()
 
 
 if __name__ == "__main__":
