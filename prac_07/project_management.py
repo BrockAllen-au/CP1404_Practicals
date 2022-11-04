@@ -29,7 +29,8 @@ def main():
         elif menu_choice == "F":
             print("Filter chosen")
         elif menu_choice == "A":
-            print("Add chosen")
+            print("Let's add a new project")
+            add_new_project(projects)
         elif menu_choice == "U":
             print("Update chosen")
             display_projects(projects)
@@ -39,6 +40,16 @@ def main():
         menu_choice = input(">>> ").upper()
     save_projects(FILENAME, projects)
     print("Thank you for using custom-built project management software.")
+
+
+def add_new_project(projects):
+    name = input("Name: ")
+    date = input("Start date (dd/mm/yy): ")
+    priority = int(input("Priority: "))
+    cost = float(input("Cost estimate: $"))
+    completion = int(input("Percent complete: "))
+    new_project = Project(name, date, priority, cost, completion)
+    projects.append(new_project)
 
 
 def display_projects(projects):
