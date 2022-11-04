@@ -26,6 +26,7 @@ def main():
             save_projects(new_save_file, projects)
         elif menu_choice == "D":
             print("Display chosen")
+            display_projects(projects)
         elif menu_choice == "F":
             print("Filter chosen")
         elif menu_choice == "A":
@@ -38,6 +39,17 @@ def main():
         menu_choice = input(">>> ").upper()
     save_projects(FILENAME, projects)
     print("Thank you for using custom-built project management software.")
+
+
+def display_projects(projects):
+    print("Incomplete projects:")
+    for project in projects:
+        if not project.is_complete():
+            print(f"\t{project}")
+    print("Completed projects:")
+    for project in projects:
+        if project.is_complete():
+            print(f"\t{project}")
 
 
 def load_projects(filename, projects):
