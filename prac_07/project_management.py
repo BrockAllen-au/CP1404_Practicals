@@ -54,13 +54,48 @@ def filter_projects(projects, filter_date):
 
 
 def update_project(projects):
-    project_choice = int(input("Project choice: "))
+    project_choice = get_valid_number("Project choice: ", 0, len(projects) - 1)
     project = projects[project_choice]
     print(project)
-    new_completion = int(input("New Percentage: "))
-    new_priority = int(input("New Priority: "))
-    project.completion_percentage = new_completion
-    project.priority = new_priority
+    invalid_input = True
+    while invalid_input:
+        try:
+            new_completion = input("New Percentage: ")
+            if new_completion == "":
+                invalid_input = False
+                pass
+            else:
+                project.completion_percentage = int(new_completion)
+                invalid_input = False
+        except ValueError:
+            print("Invalid input. Enter a whole integer.")
+    invalid_input = True
+    while invalid_input:
+        try:
+            new_priority = input("New Priority: ")
+            if new_priority == "":
+                invalid_input = False
+                pass
+            else:
+                project.priority = int(new_priority)
+                invalid_input = False
+        except ValueError:
+            print("Invalid input. Enter a whole integer.")
+
+
+def get_valid_number(prompt, low, high):
+    """Returns a valid integer from a given range."""
+    invalid_input = True
+    while invalid_input:
+        try:
+            number = int(input(prompt))
+            while number < low or number > high:
+                print(f"Invalid number. Enter a number from {low} - {high}.")
+                number = int(input(prompt))
+            invalid_input = False
+        except ValueError:
+            print(f"Invalid input. Please enter a whole number from {low} - {high}.")
+    return number
 
 
 def add_new_project(projects):
