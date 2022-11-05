@@ -4,6 +4,7 @@ Estimated completion time: 2.5 hours
 Actual completion time:
 """
 import datetime
+from operator import attrgetter
 from project import Project
 
 MENU = "- (L)oad projects\n- (S)ave projects\n- (D)isplay projects\n- (F)ilter projects by date\n" \
@@ -27,7 +28,8 @@ def main():
         elif menu_choice == "D":
             display_projects_status(projects)
         elif menu_choice == "F":
-            print("Filter chosen")
+            filter_date_string = input("Show projects that start after date (dd/mm/yy): ")
+            filter_projects(projects, filter_date_string)
         elif menu_choice == "A":
             print("Let's add a new project")
             add_new_project(projects)
@@ -40,6 +42,15 @@ def main():
         menu_choice = input(">>> ").upper()
     save_projects(FILENAME, projects)
     print("Thank you for using custom-built project management software.")
+
+
+def filter_projects(projects, filter_date):
+    """Displays projects from a specified date range."""
+    filter_date = datetime.datetime.strptime(filter_date, "%d/%m/%Y").date()
+    filtered_projects = [project for project in projects if project.start_date > filter_date]
+    filtered_projects.sort(key=attrgetter("start_date"))
+    for project in filtered_projects:
+        print(project)
 
 
 def update_project(projects):
@@ -85,7 +96,6 @@ def load_projects(filename, projects):
     in_file = open(filename, "r")
     in_file.readline()  # Reads the header line
     for line in in_file:
-        # print(repr(line.strip().split("\t")))
         parts = line.strip().split("\t")
         project = Project(parts[0], parts[1], int(parts[2]), float(parts[3]), int(parts[4]))
         projects.append(project)
