@@ -90,6 +90,8 @@ def update_project(projects):
             if new_completion == "":
                 invalid_input = False
                 pass
+            elif int(new_completion) < 0 or int(new_completion) > 100:
+                print("Please enter a number from 0 - 100")
             else:
                 project.completion_percentage = int(new_completion)
                 invalid_input = False
