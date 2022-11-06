@@ -146,6 +146,9 @@ def get_valid_float(prompt):
     while invalid_input:
         try:
             number = float(input(prompt))
+            while number < 0:
+                print("Enter a number 0 or above.")
+                number = float(input(prompt))
             invalid_input = False
         except ValueError:
             print("Enter valid number.")
