@@ -20,8 +20,7 @@ def main():
     menu_choice = input(">>> ").upper()
     while menu_choice != "Q":
         if menu_choice == "L":
-            new_project_file = input("Enter file you wish to load: ")
-            load_projects(new_project_file, projects)
+            load_new_file(projects)
         elif menu_choice == "S":
             new_save_file = input("Enter new save file: ")
             save_projects(new_save_file, projects)
@@ -41,6 +40,18 @@ def main():
         menu_choice = input(">>> ").upper()
     save_projects(FILENAME, projects)
     print("Thank you for using custom-built project management software.")
+
+
+def load_new_file(projects):
+    """Gets a new valid file to load."""
+    invalid_input = True
+    while invalid_input:
+        try:
+            new_project_file = input("Enter file you wish to load: ")
+            load_projects(new_project_file, projects)
+            invalid_input = False
+        except FileNotFoundError:
+            print(f"Unable to find file {new_project_file}")
 
 
 def filter_projects(projects):
