@@ -28,8 +28,7 @@ def main():
         elif menu_choice == "D":
             display_projects_status(projects)
         elif menu_choice == "F":
-            filter_date_string = input("Show projects that start after date (dd/mm/yy): ")
-            filter_projects(projects, filter_date_string)
+            filter_projects(projects)
         elif menu_choice == "A":
             print("Let's add a new project")
             add_new_project(projects)
@@ -44,13 +43,25 @@ def main():
     print("Thank you for using custom-built project management software.")
 
 
-def filter_projects(projects, filter_date):
+def filter_projects(projects):
     """Displays projects from a specified date range."""
-    filter_date = datetime.datetime.strptime(filter_date, "%d/%m/%Y").date()
-    filtered_projects = [project for project in projects if project.start_date > filter_date]
+    filter_date = get_valid_date("Show projects that start after date (dd/mm/yyyy): ")
+    filtered_projects = [project for project in projects if project.start_date >= filter_date]
     filtered_projects.sort(key=attrgetter("start_date"))
     for project in filtered_projects:
         print(project)
+
+
+def get_valid_date(prompt):
+    invalid_input = True
+    while invalid_input:
+        try:
+            filter_date_string = input(prompt)
+            date = datetime.datetime.strptime(filter_date_string, "%d/%m/%Y").date()
+            invalid_input = False
+        except ValueError:
+            print("Enter a valid date in format d/m/yyyy")
+    return date
 
 
 def update_project(projects):
