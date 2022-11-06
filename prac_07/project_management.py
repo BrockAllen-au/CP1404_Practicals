@@ -64,6 +64,7 @@ def filter_projects(projects):
 
 
 def get_valid_date(prompt):
+    """Gets valid date from user."""
     invalid_input = True
     while invalid_input:
         try:
@@ -76,6 +77,7 @@ def get_valid_date(prompt):
 
 
 def update_project(projects):
+    """Update a projects completion and priority."""
     project_choice = get_valid_number("Project choice: ", 0, len(projects) - 1)
     project = projects[project_choice]
     print(project)
