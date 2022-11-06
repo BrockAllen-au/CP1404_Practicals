@@ -1,7 +1,7 @@
 """
 CP1404 Practical - Project Management Program - Client Side.
 Estimated completion time: 2.5 hours
-Actual completion time:
+Actual completion time: 8 hours
 """
 import datetime
 from operator import attrgetter

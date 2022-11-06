@@ -38,6 +38,7 @@ def get_guitars(guitars):
 
 
 def display_guitars(guitars):
+    """Displays guitar details."""
     width = max([len(guitar.name) for guitar in guitars])
     for i, guitar in enumerate(guitars, start=1):
         vintage_string = " (vintage)" if guitar.is_vintage() else ""
