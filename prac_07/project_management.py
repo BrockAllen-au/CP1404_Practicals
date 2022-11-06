@@ -110,13 +110,29 @@ def get_valid_number(prompt, low, high):
 
 
 def add_new_project(projects):
+    """Adds a new project to the list of projects."""
     name = input("Name: ")
-    date = input("Start date (dd/mm/yy): ")
-    priority = int(input("Priority: "))
-    cost = float(input("Cost estimate: $"))
-    completion = int(input("Percent complete: "))
+    while name == "":
+        print("Enter valid name.")
+        name = input("Name: ")
+    date = get_valid_date("Start date (dd/mm/yyyy): ")
+    priority = get_valid_number("Priority: ", 1, 10)
+    cost = get_valid_float("Cost estimate: $")
+    completion = get_valid_number("Percent complete: ", 0, 100)
     new_project = Project(name, date, priority, cost, completion)
     projects.append(new_project)
+
+
+def get_valid_float(prompt):
+    """Gets a valid float point number."""
+    invalid_input = True
+    while invalid_input:
+        try:
+            number = float(input(prompt))
+            invalid_input = False
+        except ValueError:
+            print("Enter valid number.")
+    return number
 
 
 def display_projects(projects):
@@ -144,6 +160,7 @@ def load_projects(filename, projects):
     for line in in_file:
         parts = line.strip().split("\t")
         project = Project(parts[0], parts[1], int(parts[2]), float(parts[3]), int(parts[4]))
+        project.start_date = datetime.datetime.strptime(project.start_date, "%d/%m/%Y").date()
         projects.append(project)
 
 
