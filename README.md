@@ -17,23 +17,26 @@ Created to store all practical works for subject CP1404 - James Cook University,
 
 ## About
 
-```prac_01```  
+### prac_01  
 Input-Processing-Output (IPO), Decision and Repetition Structures
 
-```prac_02```  
+### prac_02  
 Functions
 
-```prac_03```  
+### prac_03  
 Files and Exceptions
 
-```prac_04```  
+### prac_04  
 Lists and Tuples
 
-```prac_05```  
+### prac_05  
 Strings
 
-```prac_06```  
+### prac_06  
 Classes and Object Orientated Programming (OOP)
 
-```prac_07```  
+### prac_07  
 Classes and OOP ctd.
+
+### prac_08  
+GUI Programming & Kivy
