@@ -7,6 +7,7 @@ BoxLayout:
             text: '0'
             font_size: 48
             multiline: False
+            on_text: app.convert_m_to_km(input_number.text)
         BoxLayout:
             orientation: 'vertical'
             size_hint_x: 0.25
@@ -14,19 +15,22 @@ BoxLayout:
                 id: increment_count
                 text: 'Up'
                 font_size: 20
+                on_press: app.handle_increment(input_number.text, 1)
             Button:
                 id: decrease_count
                 text: 'Down'
                 font_size: 20
-    BoxLayout:
-        orientation: "vertical"
-        Button:
-            id: convert
-            text: "Convert m to km"
+                on_press: app.handle_increment(input_number.text, -1)
+#    BoxLayout:
+#        orientation: "vertical"
+#        Button:
+#            id: convert
+#            text: "Convert miles to km"
+#            on_press: app.convert_m_to_km(input_number.text)
     BoxLayout:
         Label:
             id: conversion_output
-            text: "0"
+            text: app.conversion_output
             font_size: 70
             color: (1, 1, 0, 1)
 
